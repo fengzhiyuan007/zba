@@ -1,0 +1,240 @@
+/*短信验证*/
+.zBackFFF{
+    background: #fff;
+}
+.zSmsPhone{
+    width:100%;
+    height:1rem;
+    border-bottom: 0.02rem solid #d6dee1;
+    padding:0 0.4rem;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.zSmsPhNum{
+    width:3.5rem;
+    height:100%;
+    border:none;
+    font-size: 0.26rem;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:1.7rem;
+    margin:auto;
+}
+
+.zSmsSend{
+    width:2rem;
+    height:0.7rem;
+    background:#d6dee1;
+    border-radius: 0.6rem;
+    border:none;
+    color:#fff;
+    font-size: 0.26rem;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    right:0.4rem;
+    margin:auto;
+}
+
+.zSmsTitle{
+    width:1.5rem;
+    height:1rem;
+    display: inline-block;
+    line-height: 1rem;
+    font-weight: bold;
+}
+
+.zSmsNaxt{
+    width:6.5rem;
+    height:1rem;
+    border:0.02rem solid #00d8c9;
+    border-radius: 6rem;
+    text-align: center;
+    line-height: 1rem;
+    margin:2.7rem auto;
+    color:#00d8c9;
+    font-size: 0.3rem;
+    display: block;
+    background: #fff;
+}
+
+.zBackYe{
+    background: #ede6d6;
+}
+
+/*领取短信红包*/
+.zRedBox{
+    width:6.9rem;
+    height:6.5rem;
+    background: #fbf7eb;
+    border-radius: 0.1rem;
+    margin:0.36rem auto;
+    box-shadow: 0 0 0.5rem #e5d29f;
+    padding-top:0.5rem;
+    box-sizing: border-box;
+}
+
+.zRedHideImg{
+    width:1.2rem;
+    height:1.2rem;
+    border-radius: 50%;
+    background: #30ACEA;
+    margin:0 auto;
+}
+
+.zRedSwitch{
+    float: right;
+    color:#afa48e;
+    font-size: 0.3rem;
+    margin-right:0.5rem;
+}
+
+.zRedName{
+    margin:0.4rem auto 0.2rem;
+    font-size: 0.32rem;
+    color:#afa48e;
+    text-align: center;
+}
+
+.zRedNum{
+    font-size: 0.26rem;
+    color:#d3cbb4;
+    text-align: center;
+}
+
+.zRedTicket{
+    width:50%;
+    height:1.7rem;
+    margin-top:0.8rem;
+    float: left;
+    box-sizing: border-box;
+}
+
+.zRedTicketR{
+    float: right;
+    border-left:0.04rem solid #f1ede1;
+}
+
+.zRedTicTop{
+    text-align: center;
+    font-size: 0.32rem;
+    color:#bfb399;
+}
+
+.zRedTicNum{
+    text-align: center;
+    font-size: 0.46rem;
+    color:#3d3a2b;
+    margin-top:0.24rem;
+    font-weight: bold;
+}
+
+.zRedTicBut{
+    text-align: center;
+    font-size: 0.24rem;
+    color:#a79a7a;
+    margin-top:0.28rem;
+}
+
+.zRedRed{
+    color:#ce483d;
+}
+
+.zRedInt{
+    width:6rem;
+    font-size: 0.26rem;
+    color:#373020;
+    margin:0.8rem auto;
+}
+
+.zRedBtn{
+    width:6.9rem;
+    height:1rem;
+    background: #d84e44;
+    border-radius: 0.1rem;
+    margin:0 auto;
+    font-size: 0.36rem;
+    color:#fff;
+    text-align: center;
+    line-height: 1rem;
+    box-shadow:0 0.1rem 0.2rem  #d88c82;
+    display: block;
+    border:none;
+}
+
+/*遮罩*/
+.zRedSec{
+    width:6.6rem;
+    height:8.3rem;
+    background: #fbf7eb;
+    border-radius: 0.1rem;
+    position: fixed;
+    top:0.36rem;
+    left:0;
+    right:0;
+    margin:auto;
+    z-index: 120;
+}
+
+.zRedSecTitle{
+    font-size: 0.32rem;
+    color:#d84e44;
+    text-align: center;
+    margin-top:0.7rem;
+}
+
+.zRedSecPass{
+    font-size: 0.3rem;
+    color:#bfba9c;
+    margin:0.5rem 0 0.3rem 0.6rem;
+}
+
+.zRedClaBox{
+    margin-left:0.6rem;
+    border-left:0.02rem solid #eee;
+    overflow: hidden;
+}
+
+.zRedClass{
+    width:0.9rem;
+    height:0.8rem;
+    border:0.02rem solid #eee;
+    border-left:none;
+    box-sizing: border-box;
+    float: left;
+    text-align: center;
+    line-height: 0.8rem;
+}
+
+.zRedClaBox .zRedClass:focus{
+    border:0.02rem solid #eee;
+    border-left:none;
+}
+
+.zRedSecBtn{
+    width:5.4rem;
+    height:1rem;
+    margin:1.3rem auto 0;
+    background: #d84e44;
+    border-radius: 0.1rem;
+    font-size: 0.32rem;
+    color:#fff;
+    text-align: center;
+    line-height: 1rem;
+}
+
+.zRedOkTit{
+    font-size: 0.34rem;
+}
+
+.zRedOk{
+    text-align: center;
+    line-height: 1rem;
+    font-size: 0.34rem;
+    width:100%;
+    height:1rem;
+    border-top:0.02rem solid #e8e8e8;
+}

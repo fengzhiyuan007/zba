@@ -1,0 +1,83 @@
+<div class="email">
+	<p class="em_top"></p>
+	<h3>
+		<span>Hello</span>,{$name} 先生/女士：
+	</h3>
+
+	<h4>
+		欢迎来到优佰网<br />请点击以下链接进行邮箱验证,以便开始使用优佰网账号
+	</h4>
+
+	<h5>
+		<a href="{$_domain}{$url} " target="_blank">马上验证邮箱</a>
+
+	</h5>
+	<p class="em_ni">
+		如果您无法点击以上链接，请复制一下网址到浏览器里打开 <br /> <a href="{$_domain}{$url}"> {$_domain}{$url} </a><br />链接在{$_shixiao}内有效!<br />
+
+		如果您未申请优佰网账号，请忽略此邮件，或者与我们联系
+	</p>
+	<div class="em_b">
+		{$_bottom}
+	</div>
+</div>
+<style>
+.email {
+	width: 500px;
+	font-family: "微软雅黑", "Arial";
+	padding-left: 20px;
+	line-height: 25px;
+	color: #636466;
+}
+
+.em_top {
+	background-color: #50A5E6;
+	height: 40px;
+	background-image: url({$_domain}{$_root}/Public/images/logo_email.jpg);
+	background-repeat: no-repeat;
+}
+
+.email h3 {
+	padding-left: 20px;
+}
+
+.email h4 {
+	font-size: 14px;
+	padding-left: 40px;
+}
+
+.email h5 {
+	font-size: 14px;
+	padding-left: 40px;
+	padding-top: 8px;
+}
+
+.email h5 a {
+	text-decoration: none;
+	color: #FFF;
+	font-size: 18px;
+	background: #55aaea;
+	padding: 12px 18px;
+}
+
+.email h5 a:hover {
+	color: #666;
+}
+
+.em_ni {
+	font-size: 12px;
+	padding-left: 40px;
+}
+
+.em_ni a {
+	color: #55aaea;
+}
+
+.em_ni a:hover {
+	color: #666;
+}
+
+.em_b {
+	font-size: 12px;
+}
+</style>

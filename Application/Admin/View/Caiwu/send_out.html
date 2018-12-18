@@ -1,0 +1,240 @@
+<include file="Public:header" />
+<script type="text/javascript">
+function edit(id){
+	location.href="__URL__/edit/id/"+id;
+}
+//进入到下级
+function xj(id){
+	location.href="__URL__/index2/id/"+id;
+}
+function xiazai(){
+    var num = $("#nus").val();
+    var status = $("#status").val();
+    var start = $("#start").val();
+    var end = $("#end").val();
+    var username = $("#username").val();
+    var account_binding = $("#account_binding").val();
+    var banned = $("#banned").val();
+    var titles = $("#titles").val();
+    var sex = $("#sex").val();
+    var certification = $("#certification").val();
+    var scope = $("#scope").val();
+    var download = 'download';
+    window.location.href="__URL__/send_out?act="+download+"&nums="+num+"&start="+start+"&end="+end+"&username="+username+"&status="+status+"&account_binding="+account_binding+"&banned="+banned+"&titles="+titles+"&sex="+sex+"&certification="+certification+"&scope="+scope;
+}
+function sendname() {
+    var num = $("#nus").val();
+    var status = $("#status").val();
+    var start = $("#start").val();
+    var end = $("#end").val();
+    var username = $("#username").val();
+    var account_binding = $("#account_binding").val();
+    var banned = $("#banned").val();
+    var titles = $("#titles").val();
+    var sex = $("#sex").val();
+    var certification = $("#certification").val();
+    var scope = $("#scope").val();
+    window.location.href="__URL__/send_out?nums="+num+"&start="+start+"&end="+end+"&username="+username+"&status="+status+"&account_binding="+account_binding+"&banned="+banned+"&titles="+titles+"&sex="+sex+"&certification="+certification+"&scope="+scope;
+}
+</script>
+
+<form action="javascript:;" method="post">
+<div class="tools">
+    <span>
+        账户绑定:<select name="account_binding" id="account_binding" onchange="sendname();">
+          <option value="">全部</option>
+          <option value="1" <if condition=" $account_binding eq 1 ">selected</if>>已绑定手机</option>
+          <option value="2" <if condition=" $account_binding eq 2 ">selected</if>>未绑定手机</option>
+        </select>&nbsp;&nbsp;
+        禁播:<select name="banned" id="banned" onchange="sendname();">
+          <option value="">全部</option>
+          <option value="1" <if condition=" $banned eq 1 ">selected</if>>已禁播</option>
+          <option value="2" <if condition=" $banned eq 2 ">selected</if>>未禁播</option>
+        </select>&nbsp;&nbsp;
+        封号:<select name="titles" id="titles" onchange="sendname();">
+          <option value="">全部</option>
+          <option value="1" <if condition=" $titles eq 1 ">selected</if>>已封号</option>
+          <option value="2" <if condition=" $titles eq 2 ">selected</if>>未封号</option>
+        </select>&nbsp;&nbsp;
+        性别:<select name="sex" id="sex" onchange="sendname();">
+          <option value="">全部</option>
+          <option value="1" <if condition=" $sex eq 1 ">selected</if>>男</option>
+          <option value="2" <if condition=" $sex eq 2 ">selected</if>>女</option>
+          <option value="3" <if condition=" $sex eq 3 ">selected</if>>未知</option>
+        </select>&nbsp;&nbsp;
+        认证:<select name="certification" id="certification" onchange="sendname();">
+          <option value="">全部</option>
+          <option value="2" <if condition=" $certification eq 2 ">selected</if>>已认证</option>
+          <option value="1" <if condition=" $certification eq 1 ">selected</if>>未认证</option>
+        </select>&nbsp;&nbsp;
+    </span>
+    <span style="float:right;border: 1px solid #d0d0d0;padding: 0px 20px;"><a href="javascript:;" onclick="xiazai()">导出excl</a></span>
+    <span style="float:right;padding-left: 20px">统计送礼钻石:{$sum|default=0}钻石</span>&nbsp;&nbsp;
+</div>
+    <div class="tools">
+        <!--<div class="add"><span><a href="__URL__/toadd">添加</a></span></div>-->
+        <!--<div class="del"><span><span><a href="javascript:;">-->
+        <!--<input name="dele" type="submit" value="删除" onclick="del();" class="wr"   style="border:none; background-color:#F2F7FD; color:#2D52A5;margin-top:3px;" /></a></span></div>-->
+
+        <span style="float:left;padding-top:8px;">每页显示
+        <select id="nus" name="nus" onchange="sendname();">
+          <volist name="nums" id="l">
+             <option value="{$l}" <if condition=" $l eq $nus ">selected<else/></if>>{$l}</option>
+              </volist>
+        </select> 条
+    </span>
+        <span style="float:right;padding-right:50px;padding-top:5px;">
+   &nbsp;&nbsp;日期： <input type="text" class="laydate-icon" name="start_time" id="start" size="20" value="{$start}" readonly> - <input type="text" class="laydate-icon" name="end_time" id="end" size="20" value="{$end}" readonly>&nbsp;&nbsp;
+        筛选范围:<select name="scope" id="scope">
+            <option value="1" <if condition=" $scope eq 1 ">selected</if>>账户</option>
+            <option value="2" <if condition=" $scope eq 2 ">selected</if>>ID</option>
+            <option value="3" <if condition=" $scope eq 3 ">selected</if>>昵称</option>
+        </select>&nbsp;&nbsp;
+            关键词: <input type="text" name="username" id="username" value="{$username}" placeholder="" size="25">
+&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="button" value="搜索" id="button" onclick="sendname()">
+</span>
+
+    </div>
+
+<div class="content">
+
+<!-----------------------------------------内容开始--------------------------------------------------->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tabBox">
+<tr class="tabTitleMain">
+    <!--<td width="8%" align="center">-->
+    <!--<input type="checkbox" name="checkbox11" id="checkbox11"  onclick="return checkAll(this,'chois[]')"  value="0">全选</td>-->
+    <td width="10%" align="center">头像</td>
+    <td width="8%" align="center">会员账号</td>
+    <td width="8%" align="center">昵称</td>
+    <td width="6%" align="center">ID</td>
+    <td width="6%" align="center">性别</td>
+    <td width="6%" align="center">是否认证</td>
+    <td width="6%" align="center">师傅ID</td>
+    <td width="6%" align="center">送出合计</td>
+    <td width="6%" align="center">等级</td>
+    <td width="12%" align="center">送出时间</td>
+    <td width="12%" align="center">注册时间</td>
+    <!--<td width="12%" align="center">操作</td>-->
+</tr>
+
+
+<volist name='list' id='l' key='i'>
+<tr class="tabTextMain" id="f_{$l.id}" onmouseout="this.style.background='#FFFFFF';" onmouseover="this.style.background='#fbf435';">
+  <!--<td align="center"><input type="checkbox" class="deleteids" value="{$l.user_id}" name="chois[]"/>{$i}</td>-->
+    <td align="center" class="onerow"><img src="{$l.img}" style="width:60px;height: 60px;"></td>
+    <td align="center" class="onerow"><if condition=" $l.phone neq '' ">{$l.phone}<elseif condition=" $l.openid neq '' "/>微信({$l.openid})<elseif condition=" $l.qq_openid neq '' "/>qq({$l.qq_openid})<elseif condition=" $l.weibo neq '' "/>微博({$l.weibo})</if></td>
+    <td align="center" class="onerow">{$l.username}</td>
+    <td align="center" class="onerow">{$l.id}</td>
+    <td align="center" class="onerow"><if condition=" $l.sex eq 1 ">男<elseif condition=" $l.sex eq 2 "/>女<else/>未知</if></td>
+    <td align="center" class="onerow"><if condition=" $l.is_authen eq 1 ">否<else/>是</if></td>
+    <td align="center" class="onerow">{$l.master_id}</td>
+    <td align="center" class="onerow">{$l.count}</td>
+    <td align="center" class="onerow">{$l.grade}</td>
+    <td align="center" class="onerow">{$l.give_time|date="Y-m-d H:i",###}</td>
+    <td align="center" class="onerow">{$l.intime|date="Y-m-d H:i",###}</td>
+
+  <!--<td align="center">-->
+                  <!--<a href="{:U('edit',array('id'=>$l['withdraw_id']))}">编辑</a> &lt;!&ndash;| <a href="javascript:;"  onclick="del({$l.user_id});">删除</a>&ndash;&gt;-->
+
+               <!--</td>-->
+</tr>
+</volist>
+</table> 
+</form>
+<div class="pages">{$show}</div>
+<!-----------------------------------------内容结束--------------------------------------------------->
+</div>
+
+<script type="text/javascript">
+function checkAll(e,chois)
+{
+	var aa=document.getElementsByName(chois);
+	for(var i=0;i<aa.length;i++)
+	{  
+		aa[i].checked=e.checked;
+	}
+}
+//function tips(itemName){
+//    var f=false;
+//    var aa=document.getElementsByName(itemName);
+//	for(var i=0;i<aa.length;i++){
+// 		if(aa[i].checked==true){
+//  	 		f=true;
+// 		}
+//	}
+//	if(f==false){
+//		alert("请选择要删除的选项");
+//		return false;
+//	}else{
+//  return  confirm("一旦删除不可修复，确定删除吗？");
+//}
+//return true;
+//}
+
+function del(kid){
+    kid = kid ? kid : getChecked();
+    kid = kid.toString();
+    if(kid == ''){
+        alert("请选择要删除的选项");
+        return false;
+    }
+    if(!confirm('确定删除？'))
+        return false;
+    $.post("{:U('del')}", {ids:kid}, function(v){
+        if( v == 1 ){
+            alert('删除成功！');
+            location.reload("{:U('index')}");
+        }else{
+            alert('删除失败！');
+        }
+    });
+}
+function getChecked() {
+    var gids = new Array();
+    $.each($('input:checked'), function(i, n){
+        gids.push( $(n).val() );
+    });
+    return gids;
+}
+</script>
+<script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        var start = {
+            elem: '#start',
+            format: 'YYYY-MM-DD',
+            //min: laydate.now(), //设定最小日期为当前日期
+            max: '2099-06-16 23:59:59', //最大日期
+            istime: false,
+            istoday: false,
+            choose: function(datas){
+                $("#start").attr("value",datas);
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas //将结束日的初始值设定为开始日
+            }
+        };
+        var end = {
+            elem: '#end',
+            format: 'YYYY-MM-DD',
+            //min: laydate.now(),
+            max: '2099-06-16 23:59:59',
+            istime: false,
+            istoday: false,
+            choose: function(datas){
+                $("#end").attr("value",datas);
+                start.max = datas; //结束日选好后，重置开始日的最大日期
+            }
+        };
+        document.getElementById('start').onclick = function(){
+            start.elem = this;
+            laydate(start);
+        }
+        document.getElementById('end').onclick = function(){
+            end.elem = this
+            laydate(end);
+        }
+    });
+</script>
+    
+
+<include file="Public:footer" />

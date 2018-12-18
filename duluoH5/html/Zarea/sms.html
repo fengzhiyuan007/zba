@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="keywords" content="随叫随到">
+    <meta name="description" content="随叫随到">
+    <title>短信验证</title>
+    <link rel="stylesheet" href="../../libs/css/reset.css"/>
+    <link rel="stylesheet" href="../../libs/css/style.css"/>
+    <link rel="stylesheet" href="../../libs/css/swiper-3.3.1.min.css"/>
+    <link rel="stylesheet" href="../../libs/css/Zsms.css"/>
+    <!--自适应-->
+    <script>
+        'use strict';
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    var clientHeight = docEl.clientHeight;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 640) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body class="web_bg zBackFFF">
+<div class="veiw ">
+
+    <div class="zSmsPhone">
+        <div class="zSmsTitle">手机号</div>
+        <input class="zSmsPhNum" type="text" placeholder="请输入手机号码" maxlength="11">
+        <button class="zSmsSend">发送验证码</button>
+    </div>
+    <div class="zSmsPhone">
+        <div class="zSmsTitle">验证码</div>
+        <input class="zSmsPhNum" type="text" placeholder="请输入手机号码">
+    </div>
+    <button class="zSmsNaxt">下一步</button>
+
+
+</div>
+</body>
+<!--<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>-->
+<!--<script src="../libs/js/angular1.5.8.min.js"></script>-->
+<!--<script src="../libs/js/angular-route.min.js"></script>-->
+<!--<script src="../libs/js/angular-touch.min.js"></script>-->
+<!--<script src="../libs/js/angular-cookies.min.js"></script>-->
+<!--<script src="../libs/js/swiper-3.3.1.jquery.min.js"></script>-->
+<script>
+    var mySwiper = new Swiper('.IndexSwiper', {
+        autoplay: 5000,
+        loop: true,
+        pagination: '.swiper-pagination'
+        // 如果需要前进后退按钮
+    })
+    var indexServiceBan = new Swiper('.indexServiceBan', {
+        slidesPerView: 5,
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev'
+    })
+</script>
+</html>
+

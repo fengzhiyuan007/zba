@@ -1,0 +1,207 @@
+<include file="Public:header" />
+{:W("Easyui")}
+
+<load href="__PUBLIC__/admin/js/uploadify.css" />
+<load href="__PUBLIC__/admin/js/swfobject.js" />
+<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.uploadify.v2.1.4.min.js"></script>
+
+<script type="text/javascript">
+	window.onload=function(){
+		var leixing = document.getElementsByName("every_day_switch");
+		for (i=0; i<leixing.length; i++) {
+			if (leixing[i].checked) {
+				b = leixing[i].value;
+			}
+		}
+		if(b==1){
+			document.getElementById("p_of_time_start").className="";
+		}else{
+			document.getElementById("p_of_time_start").className="p_of_time_start";
+		}
+		var day_switch = document.getElementsByName("day_switch");
+		for (i=0; i<day_switch.length; i++) {
+			if (day_switch[i].checked) {
+				a = day_switch[i].value;
+			}
+		}
+		if(a==1){
+			document.getElementById("s_time").className="";
+		}else{
+			document.getElementById("s_time").className="s_time";
+		}
+
+	}
+ function checkss(){
+	 var leixing = document.getElementsByName("every_day_switch");
+	 for (i=0; i<leixing.length; i++) {
+		 if (leixing[i].checked) {
+			 b = leixing[i].value;
+		 }
+	 }
+	 var day_switch = document.getElementsByName("day_switch");
+	 for (i=0; i<day_switch.length; i++) {
+		 if (day_switch[i].checked) {
+			 a = day_switch[i].value;
+		 }
+	 }
+	 var period_of_time_start = $("#period_of_time_start").val();
+	 var period_of_time_end = $("#period_of_time_end").val();
+	 var start    = $("#start").val();
+	 var end    = $("#end").val();
+	 if (b==1){
+	 	if (period_of_time_start=='' || period_of_time_end==''){
+			$(".yzperiod_of_time_end").html('请填写时间段！');
+			return false;
+		}
+	 }
+	 if (a==1){
+		 if (start=='' || end==''){
+			 $(".yztime").html('选择日期！');
+			 return false;
+		 }
+	 }
+ }
+ function selevery_day_switch(key) {
+	 if(key==1){
+		 document.getElementById("p_of_time_start").className="";
+	 }else{
+		 document.getElementById("p_of_time_start").className="p_of_time_start";
+	 }
+ }
+	function selday_switch(key) {
+		if(key==1){
+			document.getElementById("s_time").className="";
+		}else{
+			document.getElementById("s_time").className="s_time";
+		}
+	}
+</script>
+<style>
+	.p_of_time_start{display: none}
+	.s_time{display: none}
+</style>
+<div class="content">
+	<!-----------------------------------------内容开始--------------------------------------------------->
+	<div class="infoBox">
+		<form name="form" action="__URL__/cash_control" method="post" enctype="multipart/form-data" onsubmit="return checkss();">
+			<input type="hidden" name="id" value="{$base.id}">
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" id="basic">
+				<tr bgcolor="white">
+					<td width="18%" class="infoBoxTd" bgcolor="white">提现开关：</td>
+					<td colspan="2">
+						<input type="radio" name="withdraw_switch" value="1" <if condition=" $base.withdraw_switch eq 1 ">checked</if>>&nbsp;开启&nbsp;&nbsp;
+						<input type="radio" name="withdraw_switch" value="2" <if condition=" $base.withdraw_switch eq 2 ">checked</if>>&nbsp;关闭
+					</td>
+				</tr>
+				<tr bgcolor="white">
+					<td width="18%" class="infoBoxTd" bgcolor="white">每天关闭时间段开关：</td>
+					<td colspan="2">
+						<input type="radio" name="every_day_switch" value="1" onchange="selevery_day_switch(this.value);" <if condition=" $base.every_day_switch eq 1 ">checked</if>>&nbsp;开启&nbsp;&nbsp;
+						<input type="radio" name="every_day_switch" value="2" onchange="selevery_day_switch(this.value);" <if condition=" $base.every_day_switch eq 2 ">checked</if>>&nbsp;关闭
+					</td>
+				</tr>
+				<tr bgcolor="white" id="p_of_time_start" class="p_of_time_start">
+					<td width="18%" class="infoBoxTd" bgcolor="white">关闭时间段：</td>
+					<td colspan="2">
+						<input type="text"  name="period_of_time_start" id="period_of_time_start" size="20" value="{$base.period_of_time_start}" > - <input type="text" name="period_of_time_end" id="period_of_time_end" size="20" value="{$base.period_of_time_end}"> 注:24小时制,格式:例:12:10<span class="yzperiod_of_time_end" style="color:red"></span>
+					</td>
+				</tr>
+				<tr bgcolor="white">
+					<td width="18%" class="infoBoxTd" bgcolor="white">预设关闭日期开关：</td>
+					<td colspan="2">
+						<input type="radio" name="day_switch" value="1" onchange="selday_switch(this.value);" <if condition=" $base.day_switch eq 1 ">checked</if>>&nbsp;开启&nbsp;&nbsp;
+						<input type="radio" name="day_switch" value="2" onchange="selday_switch(this.value);" <if condition=" $base.day_switch eq 2 ">checked</if>>&nbsp;关闭
+					</td>
+				</tr>
+				<tr bgcolor="white" id="s_time" class="s_time">
+					<td width="18%" class="infoBoxTd" bgcolor="white">关闭日期：</td>
+					<td colspan="2">
+						<input type="text" class="laydate-icon" name="start_time" id="start" size="22" value="<if condition=" $base.start_time eq '' "><else/>{$base.start_time|date="Y-m-d",###}</if>" readonly> - <input type="text" class="laydate-icon" name="end_time" id="end" size="22" value="<if condition=" $base.end_time eq '' "><else/>{$base.end_time|date="Y-m-d",###}</if>" readonly><span class="yztime" style="color:red"></span>
+					</td>
+				</tr>
+				<tr bgcolor="white">
+					<td width="18%" class="infoBoxTd" bgcolor="white">当日提现最低：</td>
+					<td colspan="2">
+						<input type="text" id="day_lowest" name="day_lowest" size="40" value="{$base.day_lowest}"> 元
+					</td>
+				</tr>
+				<tr bgcolor="white">
+					<td width="18%" class="infoBoxTd" bgcolor="white">当日提现最高：</td>
+					<td colspan="2">
+						<input type="text" id="day_highest" name="day_highest" size="40" value="{$base.day_highest}"> 元
+					</td>
+				</tr>
+				<tr bgcolor="white">
+					<td width="18%" class="infoBoxTd" bgcolor="white">当日提现次数：</td>
+					<td colspan="2">
+						<input type="text" id="day_number" name="day_number" size="40" value="{$base.day_number}"> 次
+					</td>
+				</tr>
+			</table>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="infoBoxTd">&nbsp;</td>
+					<td align="left"><input type="submit" name="submit" value="保存"
+						class="formInput01" /></td>
+				</tr>
+			</table>
+		</form>
+
+		<script type="text/javascript">
+				$(function() {
+					$(".zhifustatus[value={$base.zhifustatus}]").attr("checked","checked");
+				})
+				function check1(e){
+					if($("#yongjin").val()>100){
+						alert("佣金抽取不能超过100！");
+						return false;
+					}
+				}
+				function check2(e){
+					if($("#sunshibai").val()>100){
+						alert("外汇损失率不能超过100！");
+						return false;
+					}
+				}
+			</script>
+	</div>
+</div>
+<script>
+	layui.use('laydate', function(){
+		var laydate = layui.laydate;
+		var start = {
+			elem: '#start',
+			format: 'YYYY-MM-DD',
+			min: laydate.now(), //设定最小日期为当前日期
+			max: '2099-06-16', //最大日期
+			istime: false,
+			istoday: false,
+			choose: function(datas){
+				$("#start").attr("value",datas);
+				end.min = datas; //开始日选好后，重置结束日的最小日期
+				end.start = datas //将结束日的初始值设定为开始日
+			}
+		};
+		var end = {
+			elem: '#end',
+			format: 'YYYY-MM-DD',
+			min: laydate.now(),
+			max: '2099-06-16',
+			istime: false,
+			istoday: false,
+			choose: function(datas){
+				$("#end").attr("value",datas);
+				start.max = datas; //结束日选好后，重置开始日的最大日期
+			}
+		};
+		document.getElementById('start').onclick = function(){
+			start.elem = this;
+			laydate(start);
+		}
+		document.getElementById('end').onclick = function(){
+			end.elem = this
+			laydate(end);
+		}
+	});
+</script>
+<include file="Public:footer" />

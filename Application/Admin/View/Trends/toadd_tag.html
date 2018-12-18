@@ -1,0 +1,34 @@
+<include file="Public:header" />
+<load href="__PUBLIC__/admin/js/uploadify.css" />
+<load href="__PUBLIC__/admin/js/swfobject.js" />
+<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.uploadify.v2.1.4.min.js"></script>
+
+
+<div class="content">
+<!-----------------------------------------内容开始--------------------------------------------------->
+<div class="infoBox">
+<form name="form" action="{:U('doadd_fans')}"  method="post" onsubmit="return checkss();">
+<table width="90%" border="0" cellpadding="0" cellspacing="0" id="basic">
+               <input type="hidden" value="{$u.id}" name="id" id="id">
+                <tr>
+                  <td><div style="width:55px;">标签名:</div></td>
+		  		  <td ><input type="text" id="name"  name="name" value="{$u.name}" style="width:250px;">&nbsp;&nbsp;&nbsp;
+                     
+                      非统计数量:<input type="number" id="counts"  name="counts" value="{$u.counts}" style="width:180px;"><if condition=" $u.id eq '' ">注:默认1次</if>
+                  </td>
+                </tr>
+                
+              
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td class="infoBoxTd">&nbsp;</td>
+<td align="left"><input type="submit" name="submit" value="保存" class="formInput01" /></td>
+</tr>
+</table>
+</form>
+</div>
+
+<!-----------------------------------------内容结束--------------------------------------------------->
+</div>
+<include file="Public:footer" />

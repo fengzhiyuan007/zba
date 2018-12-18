@@ -1,0 +1,57 @@
+<include file="Public:header" />
+<load href="__PUBLIC__/admin/js/uploadify.css" />
+<load href="__PUBLIC__/admin/js/swfobject.js" />
+<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.uploadify.v2.1.4.min.js"></script>
+
+
+<SCRIPT language=JavaScript>
+	     function checkss(){
+	    	 var title    = $("#username").val();
+	    	 var person   = $("#person").val();
+	    	 if(title==''){
+	    		 alert('名称不能为空！');
+	        	 return false;
+	    	 }
+	    	 
+	     }  
+	</script>
+<div class="content">
+<!-----------------------------------------内容开始--------------------------------------------------->
+<div class="infoBox">
+<form name="form" action="{:U('doadd_level_control')}"  method="post" onsubmit="return checkss();">
+<table width="90%" border="0" cellpadding="0" cellspacing="0" id="basic">
+               <input type="hidden" value="{$p.level_control_id}" name="id">
+                <tr>
+                    <td  width="10%" class="infoBoxTd"><div style="width:95px;">等级:</div></td>
+                    <td colspan="2"><input type="text" id="grade_start"  name="grade_start" value="{$p.grade_start}" style="width:180px;">级--
+                        <input type="text" id="grade_end"  name="grade_end" value="{$p.grade_end}" style="width:180px;">级</td>
+                </tr>
+                 <tr>
+                  <td  width="10%" class="infoBoxTd"><div style="width:95px;">当日提现最高:</div></td>
+		  		  <td colspan="2"><input type="text" id="day_highest"  name="day_highest" value="{$p.day_highest}" style="width:280px;">&nbsp元</td>
+                 </tr>
+
+              
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td class="infoBoxTd">&nbsp;</td>
+<td align="left"><input type="submit" name="submit" value="保存" class="formInput01" /></td>
+</tr>
+</table>
+</form>
+</div>
+<script>
+KindEditor.ready(function(K) {
+    k1 = K.create('#content', {});
+    k2 = K.create('#content2', {});
+    k3 = K.create('#content3', {});
+
+});
+///var ue = UE.getEditor('content');
+///var ue = UE.getEditor('content2');
+///var ue = UE.getEditor('content3');
+</script>
+<!-----------------------------------------内容结束--------------------------------------------------->
+</div>
+<include file="Public:footer" />

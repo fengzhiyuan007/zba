@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title></title>
+    <link rel="stylesheet" href="__PUBLIC__/news/css/reset.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/news/css/news_details.css"/>
+    <script src="__PUBLIC__/news/js/main.js"></script>
+</head>
+<body>
+<!-- top_head -->
+<div class="topback">
+    <img src="{$details.img}" alt=""/>
+</div>
+<div class="news_tit">
+    <h1>{$details.title}</h1>
+    <p class="label">#{$details.lebel}</p>
+    <p class="nums">{$details.watch_nums}</p>
+    <p class="source">来源：{$details.source}</p>
+</div>
+<div class="news_con">
+    <div>{$details.content|htmlspecialchars_decode}</div>
+</div>
+</body>
+</html>

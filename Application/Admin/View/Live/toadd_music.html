@@ -1,0 +1,87 @@
+<include file="Public:header" />
+<load href="__PUBLIC__/admin/js/uploadify.css" />
+<load href="__PUBLIC__/admin/js/swfobject.js" />
+<script type="text/javascript" src="__PUBLIC__/admin/js/jquery.uploadify.v2.1.4.min.js"></script>
+
+<script type="text/javascript">
+ $(function($) {
+	$("#file_upload2").uploadify({
+	 		'uploader'       : '__PUBLIC__/admin/js/uploadify.swf',
+	 		'script'         : '__PUBLIC__/admin/js/uploadify.php',
+	 		'cancelImg'      : '__PUBLIC__/admin/images/cancel.png',
+	 		'folder'         : '__PUBLIC__/admin/Uploads/music',
+	 		'queueID'        : 'fileQueue2',
+	 		'sizeLimit'      :	10 * 1000 * 1024,
+			'buttonImg'      : '__PUBLIC__/admin/images/llsc.jpg',
+			'width'          :  85,
+			'height'          :  28,
+	 		'fileExt'        : '*.mp3;*.MP3;*.wav;', //允许文件上传类型,和fileDesc一起使用.
+	 		'fileDesc'       : '*.mp3;*.MP3;*.wav;',  //选择文件对话框中的提示文本.
+	 		'auto'           : true,
+	 		'multi'          : false,	
+	 		'onComplete':function(event,queueId,fileObj,response,data){
+	 		    alert(response);
+	 			$('input[name="url"]').val(response);
+	 			$('#pic2').attr('src', response);
+	 		}
+	 	});
+
+	 });
+</script>
+<SCRIPT language=JavaScript>
+	     function checkss(){
+	    	 var title    = $("#username").val();
+	    	 var person   = $("#person").val();
+             var fileDoc3   = $("#fileDoc3").val();
+	    	 if(fileDoc3==''){
+	    		 alert('未上传文件！');
+	        	 return false;
+	    	 }
+	    	 
+	     }
+
+	</script>
+<style>
+    .yincang1,.yincang2,.yincang3{display: none}
+</style>
+<div class="content">
+<!-----------------------------------------内容开始--------------------------------------------------->
+<div class="infoBox">
+<form name="form" action="{:U('doadd_music')}"  method="post" onsubmit="return checkss();">
+<table width="90%" border="0" cellpadding="0" cellspacing="0" id="basic">
+               <input type="hidden" value="{$u.music_id}" name="id">
+                <tr>
+                  <td  width="2%"  style="text-align:right;color:#2d52a5"><div style="width:55px;">音乐:</div></td>
+		  		  <td colspan="2">
+		  		  <div class="upimg-box"><div id="fileQueue2"></div>
+                  <input id="file_upload2" type="file" />
+                  &nbsp;&nbsp;<input name="url" type="text" id="fileDoc3" style="width: 70%" value="{$u.path}" />&nbsp;<span>上传mp3</span>
+                 </div>
+		  		  </td>
+                </tr>
+
+                
+              
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td class="infoBoxTd">&nbsp;</td>
+<td align="left"><input type="submit" name="submit" value="保存" class="formInput01" /></td>
+</tr>
+</table>
+</form>
+</div>
+<script>
+KindEditor.ready(function(K) {
+    k1 = K.create('#content', {});
+    k2 = K.create('#content2', {});
+    k3 = K.create('#content3', {});
+
+});
+///var ue = UE.getEditor('content');
+///var ue = UE.getEditor('content2');
+///var ue = UE.getEditor('content3');
+</script>
+<!-----------------------------------------内容结束--------------------------------------------------->
+</div>
+<include file="Public:footer" />
